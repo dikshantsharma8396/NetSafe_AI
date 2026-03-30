@@ -35,18 +35,21 @@ NetSafe_AI operates across the Network and Transport layers (Layers 3 & 4 of the
 📋 Installation & Setup
 1. Clone the repository:
 
-Bash
+'''Bash
 git clone https://github.com/dikshantsharma8396/NetSafe_AI.git
 cd NetSafe_AI \n
+
 2. Create a Virtual Environment:
 
-Bash
+'''Bash
 python -m venv .venv
 .venv\Scripts\activate  # Windows \n
+
 3. Install Dependencies:
 
-Bash
+'''Bash
 pip install -r requirements.txt \n
+
 4. Install Npcap (For Live Sniffing):
 Ensure Npcap is installed on your Windows machine in "WinPcap API-compatible Mode."
 
