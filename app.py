@@ -85,13 +85,17 @@ elif option == "Option 2: Live Network Scan":
     st.write("Sniffing real-time packets from your network interface.")
 
     if st.button("Start Live Capture", use_container_width=True, type="primary"):
+        # Initialize variables so they exist outside the status block
+        packets = []
+        packet_list = []
+        result = [0]
+
         with st.status("Listening to Network Interface...", expanded=True) as status:
             st.write("Sniffing packets...")
             packets = sniff(count=50, timeout=5)
             st.write("Processing packet headers...")
             
-            # --- PACKET TABLE (USER VISUALIZATION) ---
-            packet_list = []
+            # --- PACKET DATA COLLECTION ---
             for p in packets:
                 if p.haslayer(IP):
                     packet_list.append({
@@ -101,10 +105,6 @@ elif option == "Option 2: Live Network Scan":
                         "Protocol": p[IP].proto
                     })
             
-            if packet_list:
-                st.write("### Captured Packet Log (Preview)")
-                st.table(pd.DataFrame(packet_list).head(10))
-            
             # Logic calculation
             total_bytes = sum(len(p) for p in packets)
             live_data = pd.DataFrame([[5, total_bytes/2, total_bytes/2, 1]], 
@@ -112,6 +112,14 @@ elif option == "Option 2: Live Network Scan":
             result = model.predict(live_data)
             status.update(label="Scan Complete!", state="complete", expanded=False)
 
+        # --- UPDATED LOC: Displaying results OUTSIDE the status block ---
+        st.divider() 
+        
+        if packet_list:
+            st.write("### 📜 Captured Packet Log")
+            # Changed to st.dataframe to allow the user to scroll through the packets
+            st.dataframe(pd.DataFrame(packet_list), use_container_width=True)
+            
         # Final Result Display
         if result[0] == 0:
             st.info("### 🟢 Status: Network is Secure")
