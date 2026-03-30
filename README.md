@@ -37,16 +37,16 @@ NetSafe_AI operates across the Network and Transport layers (Layers 3 & 4 of the
 
 Bash
 git clone https://github.com/dikshantsharma8396/NetSafe_AI.git
-cd NetSafe_AI
+cd NetSafe_AI \n
 2. Create a Virtual Environment:
 
 Bash
 python -m venv .venv
-.venv\Scripts\activate  # Windows
+.venv\Scripts\activate  # Windows \n
 3. Install Dependencies:
 
 Bash
-pip install -r requirements.txt
+pip install -r requirements.txt \n
 4. Install Npcap (For Live Sniffing):
 Ensure Npcap is installed on your Windows machine in "WinPcap API-compatible Mode."
 
