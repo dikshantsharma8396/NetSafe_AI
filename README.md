@@ -36,7 +36,7 @@ NetSafe_AI operates across the Network and Transport layers (Layers 3 & 4 of the
 1. Clone the repository:
 
 Bash
-git clone https://github.com/yourusername/NetSafe_AI.git
+git clone https://github.com/dikshantsharma8396/NetSafe_AI.git
 cd NetSafe_AI
 2. Create a Virtual Environment:
 
